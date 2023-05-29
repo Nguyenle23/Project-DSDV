@@ -1,0 +1,32 @@
+.header {
+  background-color: #279cd38f;
+  text-align: center;
+  padding: 6px;
+}
+
+.header h1 {
+  margin: 0;
+  color: #fff;
+}
+
+.nav-links {
+  list-style-type: none;
+  padding: 15px;
+  margin: 0 500px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-links li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
