@@ -8,7 +8,6 @@ function App() {
     <>
       <Header />
       <div className="container">
-        <Sidebar />
         <Content />
       </div>
     </>

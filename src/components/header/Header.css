@@ -2,6 +2,9 @@
   background-color: #279cd38f;
   text-align: center;
   padding: 6px;
+  min-height: 10vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 .header h1 {

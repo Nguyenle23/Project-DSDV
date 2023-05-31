@@ -1,8 +1,37 @@
 #chart-frame {
-  width: 100%;
-  height: 1500px;
+  display: inline-block;
+  position: relative;
+  width: 70vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #chart {
-  overflow: scroll;
+  position: relative;
+  overflow-x: scroll;
+  border: 1px solid white;
+}
+
+.title {
+  position: absolute;
+  font-size: 1.5rem;
+  top: 10%;
+  color: #fff;
+  text-align: center;
+}
+
+.x-axis {
+  /* transform: translateY(96%); */
+  font-size: 0.6rem;
+  color: white;
+  stroke-width: 1;
+  font-size: 24;
+  font-family: sans-serif;
+  text-anchor: middle;
+}
+
+.y-axis {
+  color: white;
 }
