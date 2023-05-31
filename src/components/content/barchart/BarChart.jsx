@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
-import "./Chart.css";
+import "./BarChart.css";
 
 const Chart = ({ type }) => {
   const [dataFetched, setDataFetched] = useState(false);
@@ -34,11 +34,7 @@ const Chart = ({ type }) => {
         const distance_next_rect = 20;
         const padding_x = 128;
 
-
         data.pop()
-        console.log(data)
-
-
 
         const xScale = d3
           .scaleBand()
@@ -82,12 +78,11 @@ const Chart = ({ type }) => {
           .append("text")
           .text((d) => d["count"])
           .attr("class", "text")
-          .attr("x", (d, i) => i * distance_next_rect * scale_value + 50 + (rect_width * scale_value) / 2)
+          .attr("x", (d, i) => i * distance_next_rect * scale_value + 42 + (rect_width * scale_value) / 2)
           .attr("y", (d, i) => {
             return chart_frame_height - d["count"] * 5 - distance_next_rect * scale_value + 20;
           })
           .attr("fill", "white");
-
 
         svg
           .append("g")
