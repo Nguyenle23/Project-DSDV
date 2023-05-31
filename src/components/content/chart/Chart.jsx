@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
+import "./Chart.css"
 
 const Chart = () => {
   const [dataFetched, setDataFetched] = useState(false);
@@ -8,10 +9,9 @@ const Chart = () => {
     const fetchData = async () => {
       if (!dataFetched) {
         const response = await d3.csv(
-          "https://raw.githubusercontent.com/Nguyenle23/Project-DSDV/main/fifa.csv?token=GHSAT0AAAAAABSFP7TMKAU7KFHYQZOAMFLIZDU4UTA"
+          "https://res.cloudinary.com/nguyenle23/raw/upload/v1685502289/me/fifa_data.csv"
         );
         const data = response.map((d) => d.Age);
-        console.log(data);
 
         const svg = d3
           .select("#chart")
@@ -24,9 +24,9 @@ const Chart = () => {
           .data(data)
           .enter()
           .append("rect")
-          .attr("x", (d, i) => i * 70)
-          .attr("y", (d) => 300 - d * 5)
-          .attr("width", 65)
+          .attr("x", (d, i) => i * 20)
+          .attr("y", (d) => 500 - d * 5)
+          .attr("width", 10)
           .attr("height", (d) => d * 5)
           .attr("fill", "white");
 
@@ -36,8 +36,8 @@ const Chart = () => {
           .enter()
           .append("text")
           .text((d) => d)
-          .attr("x", (d, i) => i * 70)
-          .attr("y", (d, i) => 300 - 10 * d - 3)
+          .attr("x", (d, i) => i * 20 - 2)
+          .attr("y", (d, i) => 500 - 5 * d - 3)
           .attr("fill", "white");
 
         setDataFetched(true);
@@ -50,7 +50,11 @@ const Chart = () => {
     };
   }, [dataFetched]);
 
-  return <div id="chart"></div>;
+  return (
+    <div id="chart-frame">
+      <div id="chart"></div>
+    </div>
+  )
 };
 
 export default Chart;

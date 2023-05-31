@@ -9,10 +9,10 @@ const Sidebar = () => {
         <li className="sidebar-menu-item">Visualize data of FIFA Player</li>
         <li className="sidebar-menu-item">With 3 charts below</li>
       </ul>
-      <ul className="sidebar-menu">
+      {/* <ul className="sidebar-menu">
         <li className="sidebar-menu-item">Le Nguyen Binh Nguyen</li>
         <li className="sidebar-menu-item">ITITIU19169</li>
-      </ul>
+      </ul> */}
     </div>
   );
 };
