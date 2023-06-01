@@ -36,5 +36,18 @@
 }
 
 button {
+  width: 14rem;
+  height: 4rem;
   padding: 0.5rem 3rem;
+  border: 0.1rem solid #bdc9d6;
+  background-color: hsl(206, 35%, 32%);
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  transition: all 500ms ease;
+}
+
+button:hover {
+  background-color: hsl(206, 70%, 27%);
 }

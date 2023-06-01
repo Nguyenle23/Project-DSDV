@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Content.css';
 import BarChart from './barchart/BarChart';
-import LineChart from './linechart/LineChart';
+// import LineChart from './linechart/LineChart';
 import GeoChart from './geochart/GeoChart';
 
 const Content = () => {
@@ -12,15 +12,15 @@ const Content = () => {
       <div className='chart-title'><h1>Project Data Science and Visualization</h1></div>
       <div style={{ display: 'flex', marginTop: '2rem' }}>
         <div className='button-container'>
-          <button onClick={() => setType('barChart')}>Bar chart</button>
-          <button onClick={() => setType('lineChart')}>Line chart</button>
-          <button onClick={() => setType('geoChart')}>Geo chart</button>
-          <button onClick={() => setType('test3')}>Test</button>
+          <button onClick={() => setType('barChart')}>BAR CHART</button>
+          <button onClick={() => setType('lineChart')}>LINE CHART</button>
+          <button onClick={() => setType('geoChart')}>GEO CHART</button>
+          <button onClick={() => setType('test3')}>TEST</button>
         </div>
         <div className='interactive-view'>
 
           {type === 'barChart' && <BarChart type={type} />}
-          {type === 'lineChart' && <LineChart type={type} />}
+          {/* {type === 'lineChart' && <LineChart type={type} />} */}
           {type === 'geoChart' && <GeoChart type={type} />}
         </div>
       </div>

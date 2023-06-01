@@ -69,7 +69,7 @@ const Chart = ({ type }) => {
           .attr("height", (d) => {
             return d["count"] * 5;
           })
-          .attr("fill", "white");
+          .attr("fill", "#32a0f8");
 
         svg
           .selectAll("text")
@@ -82,7 +82,7 @@ const Chart = ({ type }) => {
           .attr("y", (d, i) => {
             return chart_frame_height - d["count"] * 5 - distance_next_rect * scale_value + 20;
           })
-          .attr("fill", "white");
+          .attr("fill", "black");
 
         svg
           .append("g")
@@ -96,7 +96,7 @@ const Chart = ({ type }) => {
           .attr("font-family", "sans-serif")
           .attr("font-size", "15px")
           .attr("font-weight", "bolder")
-          .attr("fill", "white")
+          .attr("fill", "black")
           .attr("x", data.length * distance_next_rect * scale_value + padding_x)
           .attr("y", 480)
           .attr("class", "countries")
@@ -114,7 +114,7 @@ const Chart = ({ type }) => {
           .attr("font-family", "sans-serif")
           .attr("font-size", "15px")
           .attr("font-weight", "bolder")
-          .attr("fill", "white")
+          .attr("fill", "black")
           .attr("x", 150)
           .attr("y", 180)
           .attr("class", "number")
