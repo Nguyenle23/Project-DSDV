@@ -2,9 +2,10 @@ import { useState } from 'react';
 import './Content.css';
 import BarChart from './barchart/BarChart';
 import LineChart from './linechart/LineChart';
+import GeoChart from './geochart/GeoChart';
 
 const Content = () => {
-  const [type, setType] = useState('bar')
+  const [type, setType] = useState('barChart')
   return (
 
     <div className="content">
@@ -13,13 +14,14 @@ const Content = () => {
         <div className='button-container'>
           <button onClick={() => setType('barChart')}>Bar chart</button>
           <button onClick={() => setType('lineChart')}>Line chart</button>
-          <button onClick={() => setType('test2')}>Test</button>
+          <button onClick={() => setType('geoChart')}>Geo chart</button>
           <button onClick={() => setType('test3')}>Test</button>
         </div>
         <div className='interactive-view'>
 
           {type === 'barChart' && <BarChart type={type} />}
           {type === 'lineChart' && <LineChart type={type} />}
+          {type === 'geoChart' && <GeoChart type={type} />}
         </div>
       </div>
     </div>
