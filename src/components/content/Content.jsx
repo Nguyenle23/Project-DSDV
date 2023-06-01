@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Content.css';
 import BarChart from './barchart/BarChart';
-// import LineChart from './linechart/LineChart';
+import LineChart from './linechart/LineChart';
 import GeoChart from './geochart/GeoChart';
 
 const Content = () => {
@@ -20,7 +20,7 @@ const Content = () => {
         <div className='interactive-view'>
 
           {type === 'barChart' && <BarChart type={type} />}
-          {/* {type === 'lineChart' && <LineChart type={type} />} */}
+          {type === 'lineChart' && <LineChart type={type} />}
           {type === 'geoChart' && <GeoChart type={type} />}
         </div>
       </div>

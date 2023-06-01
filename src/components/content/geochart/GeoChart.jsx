@@ -11,29 +11,28 @@ const GeoChart = ({ type }) => {
   useEffect(() => {
     const fetchData = async () => {
       if (true) {
-        // const response = await d3.csv(
-        //   "https://res.cloudinary.com/nguyenle23/raw/upload/v1685516151/me/fifa_500_new.csv"
-        // );
+        const response = await d3.csv(
+          "https://res.cloudinary.com/nguyenle23/raw/upload/v1685516151/me/fifa_500_new.csv"
+        );
 
-        // const countPlayersByCountry = (data) => {
-        //   const result = [];
-        //   for (let i = 0; i < data.length; i++) {
-        //     const country = data[i].Country;
-        //     const duration = data[i].Duration;
-        //     const index = result.findIndex((item) => item.country === country);
-        //     if (index === -1) {
-        //       result.push({ country: country, duration: duration, count: 1 });
-        //     }
-        //     if (index !== -1) {
-        //       result[index].count += 1;
-        //     }
-        //   }
-        //   return result;
-        // };
+        const countPlayersByCountry = (data) => {
+          const result = [];
+          for (let i = 0; i < data.length; i++) {
+            const country = data[i].Country;
+            const duration = data[i].Duration;
+            const index = result.findIndex((item) => item.country === country);
+            if (index === -1) {
+              result.push({ country: country, duration: duration, count: 1 });
+            }
+            if (index !== -1) {
+              result[index].count += 1;
+            }
+          }
+          return result;
+        };
 
-        // const data = countPlayersByCountry(response);
-        // data.pop();
-        // console.log(data);
+        const dataPlayer = countPlayersByCountry(response);
+        dataPlayer.pop();
 
         var width = 1000;
         var height = 500;
@@ -58,28 +57,50 @@ const GeoChart = ({ type }) => {
             .enter()
             .append("path")
             .attr("d", path)
-            .attr("fill", "lightgray")
-            .attr("stroke", "white")
-            .attr("stroke-width", 0.5)
+            .attr("fill", "#1EA362")
+            .attr("stroke", "black")
+            .attr("stroke-width", 0.4)
             .on("mouseover", (event, d) => {
               // Handle mouseover event
-              d3.select(event.target).attr("fill", "orange");
+              d3.select(event.target).attr("fill", "#077e4e");
 
               tooltip.transition().duration(200).style("opacity", 0.9);
               tooltip
-                .html("<strong>Country: </strong>" + d.properties.name)
+                .html(() => {
+                  if (dataPlayer) {
+                    var playerData = dataPlayer.find(
+                      (item) => item.country === d.properties.name
+                    );
+                    if (playerData) {
+                      console.log(playerData)
+                      return (
+                        "<strong>Country: </strong>" +
+                        d.properties.name +
+                        "<br/>" +
+                        "<strong>Number of players: </strong>" +
+                        playerData.count
+                      );
+                    } else {
+                      return (
+                        "<strong>Country: </strong>" +
+                        d.properties.name +
+                        "<br/>" +
+                        "<strong>Number of players: </strong>" +
+                        0
+                      );
+                    }
+                  }
+                })
                 .style("left", event.pageX + "px")
                 .style("top", event.pageY - 28 + "px");
             })
             .on("mouseout", (event, d) => {
               // Handle mouseout event
-              d3.select(event.target).attr("fill", "lightgray");
+              d3.select(event.target).attr("fill", "#1EA362");
             })
             .on("mouseleave", (event, d) => {
               // Handle click event
-              tooltip.transition().duration(200).style("opacity", 0);
-              // setZoomedCountry(d);
-              // console.log(d);
+              tooltip.transition().duration(500).style("opacity", 0);
             });
 
           let zoomLevel = 1;
@@ -113,6 +134,7 @@ const GeoChart = ({ type }) => {
           // Append zoom-in button
           const zoomInButton = svg
             .append("g")
+            .attr("class", "zoom-in-btn")
             .attr("transform", "translate(20, 20)")
             .on("click", handleZoomIn);
 
@@ -122,6 +144,15 @@ const GeoChart = ({ type }) => {
             .attr("height", 30)
             .attr("fill", "white")
             .attr("stroke", "black");
+
+          zoomInButton
+            .append("text")
+            .attr("x", 15)
+            .attr("y", 18)
+            .attr("text-anchor", "middle")
+            .attr("alignment-baseline", "middle")
+            .attr("font-size", 20)
+            .text("+");
 
           // Append zoom-out button
           const zoomOutButton = svg
@@ -136,6 +167,15 @@ const GeoChart = ({ type }) => {
             .attr("fill", "white")
             .attr("stroke", "black")
             .attr("stroke-width", 1);
+
+          zoomOutButton
+            .append("text")
+            .attr("x", 15)
+            .attr("y", 18)
+            .attr("text-anchor", "middle")
+            .attr("alignment-baseline", "middle")
+            .attr("font-size", 20)
+            .text("-");
 
           // Render the zoom buttons
 
@@ -229,16 +269,15 @@ const GeoChart = ({ type }) => {
     };
     fetchData();
   });
+  
   const svgStyle = {
-    borderColor: '#fff',
-    borderWidth: '0.2rem',
-    borderStyle: 'solid',
+    borderColor: "#000",
+    borderWidth: "0.2rem",
+    borderStyle: "solid",
+    backgroundColor: "#0e90b8",
   };
 
-  return (
-    <svg ref={svgRef} style={svgStyle} width={1000} height={500}>
-    </svg>
-  );
+  return <svg ref={svgRef} style={svgStyle} width={1000} height={500}></svg>;
 };
 
 export default GeoChart;
